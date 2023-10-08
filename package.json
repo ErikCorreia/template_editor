@@ -1,0 +1,11 @@
+{
+  "name": "template-editor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "sass -w app/views/assets/scss:app/views/assets/css"
+  },
+  "author": "",
+  "license": "ISC"
+}
