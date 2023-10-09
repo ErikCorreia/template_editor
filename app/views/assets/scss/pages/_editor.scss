@@ -157,9 +157,34 @@
         position: relative;
         height: 100vh;
         width: 100%;
+
+        &.expand {
+            .resizable-content {
+                top: 0;
+                bottom: 0;
+                left: -360px !important;
+                right: 0;
+            }
+
+            .draggable {
+                left: -360px !important;
+            }
+        }
+
+        &:hover {
+            .draggable, .draggable:hover {z-index: 1 !important;}
+            &:hover,
+            &.moving {
+                span {
+                    &:after {
+                        transform: translateX(0);
+                    }
+                }
+            }
+        }
     }
 
-    .resisable-content {
+    .resizable-content {
         position: absolute;
         top: 24px;
         bottom: 24px;
@@ -169,13 +194,17 @@
         background-color: #fff;
         transition: .8s ease-in-out;
         transform-origin: center;
+        overflow: hidden;
     }
 
     .draggable {
         position: absolute;
-        left: 0;
+        left: -10px;
         height: 100%;
-        z-index: 10;
+        width: 11px;
+        z-index: -1;
+        transition: .5s;
+        cursor: col-resize;
 
         span {
             position: relative;
@@ -186,32 +215,43 @@
                 content: "";
                 display: block;
                 position: absolute;
-                top: 50%;
+                top: 48%;
+                bottom: 48%;
                 transform: translateY(-50%);
                 left: 0px;
-                width: 7px;
-                height: 45px;
+                width: 5px;
                 background-color: #ddd;
-                cursor: move;
+
                 border-radius: 5px;
                 transition: .5s;
                 transform: scale(.8);
                 opacity: .7;
+                transform: translateX(15px);
             }
+        }
 
-            &:hover {
-                &:after {
-                    height: 60px;
-                    transform: scale(1);
-                    background-color: rgb(3, 173, 122);
-                }
+        &:hover {
+            span:after {
+                bottom: 45%;
+                top: 45%;
+                background-color: rgb(3, 173, 122);
             }
         }
 
         &.moving {
-            background-color: rgba(255, 255, 255, .1);
             width: 100%;
+            transition: 0s;
+            background-color: rgba(0, 0, 0, .05);
+            z-index: 10;
         }
     }
 
+    .editor-tools-provider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #1a1a1a;
+        width: 380px;
+        height: 68px;
+    }
 }

@@ -10,7 +10,7 @@ class EditorController extends Controller
     {
         $this->view->setLayout('/layout/editor-layout.php');
         return $this->view->render($response, '/pages/editor/editor.php', [
-            'page' => 'http://wordpress.lh'
+            'page' => 'http://templateedit.lh'
         ]);
     }
 }

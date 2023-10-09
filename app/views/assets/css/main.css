@@ -135,7 +135,22 @@ body {
   height: 100vh;
   width: 100%;
 }
-.editor-layout-container .resisable-content {
+.editor-layout-container .editor-layer.expand .resizable-content {
+  top: 0;
+  bottom: 0;
+  left: -360px !important;
+  right: 0;
+}
+.editor-layout-container .editor-layer.expand .draggable {
+  left: -360px !important;
+}
+.editor-layout-container .editor-layer:hover .draggable, .editor-layout-container .editor-layer:hover .draggable:hover {
+  z-index: 1 !important;
+}
+.editor-layout-container .editor-layer:hover:hover span:after, .editor-layout-container .editor-layer:hover.moving span:after {
+  transform: translateX(0);
+}
+.editor-layout-container .resizable-content {
   position: absolute;
   top: 24px;
   bottom: 24px;
@@ -145,12 +160,16 @@ body {
   background-color: #fff;
   transition: 0.8s ease-in-out;
   transform-origin: center;
+  overflow: hidden;
 }
 .editor-layout-container .draggable {
   position: absolute;
-  left: 0;
+  left: -10px;
   height: 100%;
-  z-index: 10;
+  width: 11px;
+  z-index: -1;
+  transition: 0.5s;
+  cursor: col-resize;
 }
 .editor-layout-container .draggable span {
   position: relative;
@@ -161,26 +180,36 @@ body {
   content: "";
   display: block;
   position: absolute;
-  top: 50%;
+  top: 48%;
+  bottom: 48%;
   transform: translateY(-50%);
   left: 0px;
-  width: 7px;
-  height: 45px;
+  width: 5px;
   background-color: #ddd;
-  cursor: move;
   border-radius: 5px;
   transition: 0.5s;
   transform: scale(0.8);
   opacity: 0.7;
+  transform: translateX(15px);
 }
-.editor-layout-container .draggable span:hover:after {
-  height: 60px;
-  transform: scale(1);
+.editor-layout-container .draggable:hover span:after {
+  bottom: 45%;
+  top: 45%;
   background-color: rgb(3, 173, 122);
 }
 .editor-layout-container .draggable.moving {
-  background-color: rgba(255, 255, 255, 0.1);
   width: 100%;
+  transition: 0s;
+  background-color: rgba(0, 0, 0, 0.05);
+  z-index: 10;
+}
+.editor-layout-container .editor-tools-provider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #1a1a1a;
+  width: 380px;
+  height: 68px;
 }
 
 /*# sourceMappingURL=main.css.map */

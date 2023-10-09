@@ -42,10 +42,10 @@
         </div>
     </div>
 </div>
-<script>
+<!-- <script>
     function resizePreview(width, height = null) {
-        console.log(document.querySelector('.resisable-content'))
-        document.querySelector('.resisable-content').style.width = width + 'px'
-        document.querySelector('.resisable-content').style.height = height + 'px'
+        console.log(document.querySelector('.resizable-content'))
+        document.querySelector('.resizable-content').style.width = width  + 'px'
+        document.querySelector('.resizable-content').style.height = height + 'px'
     }
-</script>
+</script> -->
